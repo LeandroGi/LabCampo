@@ -69,14 +69,13 @@ sub_timer=millis(); //converto la stringa nell'array di char e la inserisco nell
 
 
 
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
-#define NUM_LEDS 2 //definisce il numero di led per ogni colonna
+//VERSIONE DEFINITIVA 4 RIGHE, 8 COLONNE.
+#define NUM_LEDS 4 //definisce il numero di led per ogni colonna
 //#define DATA_PIN 4 //dice su quale pin è connessa la striscia di LED
-#define ROWS 2 //definisce 6 righe: una per ogni LED
-#define COLUMNS 3 //numero di colonne
+#define ROWS 4 //NUMERO DI RIGHE
+#define COLUMNS 8 //numero di colonne
 #define S 255
-#define V 40
+#define V 255
 CRGB leds[COLUMNS][ROWS];
 
 int PcountB=0;
@@ -199,11 +198,17 @@ ros::Subscriber<std_msgs::UInt8MultiArray> sub("stato", &refresh_status); //defi
 void setup()
 {
 
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
- FastLED.addLeds<WS2812B, 4, GRB>(leds[0], NUM_LEDS);
- FastLED.addLeds<WS2812B, 5, GRB>(leds[1], NUM_LEDS);
- FastLED.addLeds<WS2812B, 6, GRB>(leds[2], NUM_LEDS);
-
+//VERSIONE 4x8 COLLEGAMENTI ALLE USCITE DIGITALI COPIATI DAL FILE Hippo_antenna_board.ino
+  
+FastLED.addLeds<WS2812B, 11, GRB>(leds[0], 4);//11
+  FastLED.addLeds<WS2812B, 7, GRB>(leds[1], 4);//7
+  FastLED.addLeds<WS2812B, 10, GRB>(leds[2], 4);//10
+  FastLED.addLeds<WS2812B, 4, GRB>(leds[3], 4);//4
+  FastLED.addLeds<WS2812B, 5, GRB>(leds[4], 4);//5
+  FastLED.addLeds<WS2812B, 8, GRB>(leds[5], 4);//8
+  FastLED.addLeds<WS2812B, 6, GRB>(leds[6], 4);//6
+  FastLED.addLeds<WS2812B, 9, GRB>(leds[7], 4);//9
+  
  pinMode(13, OUTPUT); //Beacon Flash
 
 
