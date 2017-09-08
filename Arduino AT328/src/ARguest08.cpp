@@ -69,11 +69,10 @@ sub_timer=millis(); //converto la stringa nell'array di char e la inserisco nell
 
 
 
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
+//VERSIONE DI PROVA CON 3 COLONNE, COLLEGATE ALLE PORTE 4,5,6 CON 2 RIGHE
 #define NUM_LEDS 2 //definisce il numero di led per ogni colonna
 //#define DATA_PIN 4 //dice su quale pin è connessa la striscia di LED
-#define ROWS 2 //definisce 6 righe: una per ogni LED
+#define ROWS 2 //NUMERO DI RIGHE
 #define COLUMNS 3 //numero di colonne
 #define S 255
 #define V 40
@@ -199,7 +198,7 @@ ros::Subscriber<std_msgs::UInt8MultiArray> sub("stato", &refresh_status); //defi
 void setup()
 {
 
-//VERSIONE DI PROVA CON 6 LED CONSIDERATI COME COLONNE
+//VERSIONE DI PROVA CON 3 COLONNE E 2 RIGHE LED CONSIDERATI COME COLONNE
  FastLED.addLeds<WS2812B, 4, GRB>(leds[0], NUM_LEDS);
  FastLED.addLeds<WS2812B, 5, GRB>(leds[1], NUM_LEDS);
  FastLED.addLeds<WS2812B, 6, GRB>(leds[2], NUM_LEDS);
